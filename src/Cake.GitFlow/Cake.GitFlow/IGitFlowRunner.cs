@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Cake.GitFlow
 {
+    using System;
+
     /// <summary>
     /// Defines commands that will run from the Cake script
     /// </summary>
-    interface IGitFlowRunner
+    public interface IGitFlowRunner
     {
+        IGitFlowRunner Run(Action<GitFlowRunnerSettings> configure = null);
+        IGitFlowRunner Run(GitFlowRunnerSettings settings);
     }
 }
