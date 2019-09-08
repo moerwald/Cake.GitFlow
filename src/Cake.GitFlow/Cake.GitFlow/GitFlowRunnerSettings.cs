@@ -20,7 +20,7 @@
         {
             if (Version)
             {
-                args.Append("-v");
+                args.Append("--version");
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Cake.GitFlow.Aliases
     public static class GitFlowRunnerAliases
     {
         [CakeMethodAlias()]
-        public static IGitFlowRunner Release (this ICakeContext context, Action<GitFlowRunnerSettings> action = null)
+        public static IGitFlowRunner GitFlowRelease (this ICakeContext context, Action<GitFlowRunnerSettings> action = null)
         {
             if (context is null)
             {
