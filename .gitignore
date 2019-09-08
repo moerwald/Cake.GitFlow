@@ -1,0 +1,7 @@
+db.lock
+*.suo
+*.cache
+bin
+obj
+.vs
+*~
