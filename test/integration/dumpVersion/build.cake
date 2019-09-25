@@ -8,8 +8,15 @@ var slnFile = @"..\src\Cake.GitFlow\Cake.GitFlow.sln";
 Task("Default")
     .Does(() =>
 {
-        GitFlowRelease (s => s.Version = true);
+    GitFlowShotGitVersion();
 });
+
+Task("CreateNewRelease")
+    .Does(() =>{
+        GitFlowNewRelease(new GitFlowReleaseSettings{});
+
+
+    });
 
 // EXECUTION
 RunTarget(target);
