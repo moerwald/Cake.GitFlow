@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.34.1" />
+    <PackageReference Include="FluentOptionals" Version="1.1.10.65" />
   </ItemGroup>
 
 </Project>

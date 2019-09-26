@@ -11,11 +11,11 @@ namespace Cake.GitFlow.Release.Settings
     ///   branch is directly merged to the master branch. Afterwards a tag with Major.Minor.Bugfix is created.
     /// - Settings a tag prefix.
     /// </summary>
-    public class GitFlowReleaseSettings : ToolSettings
+    public abstract class GitFlowReleaseSettings : ToolSettings
     {
         public VersionIncrement VersionDigitToIncrement { get; set; } = new VersionIncrement();
 
-        public ReleaseBranchBehaviour ReleaseBranchBehaviour { get; set; } = new ReleaseBranchBehaviour();
+        protected ReleaseBranchBehaviour ReleaseBranchBehaviour { get; set; } = new ReleaseBranchBehaviour();
 
         public string TagPrefix { get; set; } = string.Empty;
     }

@@ -1,5 +1,6 @@
 ﻿using Cake.Core;
 using Cake.Core.Annotations;
+using Cake.GitFlow.Release.Settings;
 using System;
 
 namespace Cake.GitFlow.Release.Aliases
@@ -9,12 +10,20 @@ namespace Cake.GitFlow.Release.Aliases
         [CakeMethodAlias()]
         public static IGitFlowRunner GitFlowShotGitVersion(
             this ICakeContext context,
-            GitFlowRunnerSettings settings)
+            GitFlowReleaseSettings settings)
         {
             if (context is null)
             {
                 throw new ArgumentNullException(nameof(context));
             }
+
+            switch (settings)
+            {
+                case MergeDevBranchToMaster mergeToMaser:
+                    // Todo:
+                    break;
+            }
+
 
             // Todo: Create new release branch, if needed
             //       Get highest tag
