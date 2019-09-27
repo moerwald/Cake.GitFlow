@@ -12,14 +12,18 @@ namespace Cake.GitFlow.Release.Aliases
             this ICakeContext context,
             GitFlowReleaseSettings settings)
         {
-            if (context is null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
+            // Param null checks
+            if (context is null) { throw new ArgumentNullException(nameof(context)); }
+            if (settings is null) { throw new ArgumentNullException(nameof(settings)); }
+
+
 
             switch (settings)
             {
                 case MergeDevBranchToMaster mergeToMaser:
+                    // Todo:
+                    break;
+                case CreateNewReleaseBranch newReleaseBranch:
                     // Todo:
                     break;
             }
@@ -33,7 +37,6 @@ namespace Cake.GitFlow.Release.Aliases
 
             // Remove below line just needed for CI to check if we still compile
             return new GitFlowRunner(context);
-
         }
     }
 }
