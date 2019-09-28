@@ -7,6 +7,7 @@ namespace Cake.GitFlow
     using Cake.Core.Tooling;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class GitFlowRunner : Tool<GitFlowRunnerSettings>, IGitFlowRunner
     {
@@ -43,6 +44,15 @@ namespace Cake.GitFlow
             var args = GetSettingsArguments(settings);
             Run(settings, args);
             return this;
+        }
+
+        public IGitFlowRunner Run(IEnumerable<string> args)
+        {
+             var pab = new ProcessArgumentBuilder ();
+             args.Select(a => pab.Append(a));
+             
+             Run(new GitFlowRunnerSettings(), pab);
+             return this;
         }
     }
 }

@@ -2,6 +2,8 @@
 namespace Cake.GitFlow
 {
     using System;
+    using System.Collections.Generic;
+
 
     /// <summary>
     /// Defines commands that will run from the Cake script
@@ -10,5 +12,6 @@ namespace Cake.GitFlow
     {
         IGitFlowRunner Run(Action<GitFlowRunnerSettings> configure = null);
         IGitFlowRunner Run(GitFlowRunnerSettings settings);
+        IGitFlowRunner Run(IEnumerable<string> args);
     }
 }
