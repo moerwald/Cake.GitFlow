@@ -10,18 +10,11 @@
     /// </summary>
     public class GitFlowRunnerSettings : ToolSettings
     {
-        public bool Version { get; set; }
         /// <summary>
         /// Check property states of this class and appends appropriate
         /// cmd line arguments to the <paramref name="args"/> parameter.
         /// </summary>
         /// <param name="args"></param>
-        internal void Evaluate(ProcessArgumentBuilder args)
-        {
-            if (Version)
-            {
-                args.Append("--version");
-            }
-        }
+        internal virtual void Evaluate(ProcessArgumentBuilder args){}
     }
 }

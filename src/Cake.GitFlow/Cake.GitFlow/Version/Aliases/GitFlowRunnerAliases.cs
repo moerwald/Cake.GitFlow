@@ -1,8 +1,9 @@
 ﻿using Cake.Core;
 using Cake.Core.Annotations;
+using Cake.GitFlow.Version.Settings;
 using System;
 
-namespace Cake.GitFlow.Aliases
+namespace Cake.GitFlow.Version.Aliases
 {
     public static class GitFlowRunnerAliases
     {
@@ -16,7 +17,7 @@ namespace Cake.GitFlow.Aliases
             }
 
             var runner = new GitFlowRunner(context);
-            runner.Run(new GitFlowRunnerSettings { Version = true });
+            runner.Run(new VersionSettings { Version = true });
             return runner;
         }
     }

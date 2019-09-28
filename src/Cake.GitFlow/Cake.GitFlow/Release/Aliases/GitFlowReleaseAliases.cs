@@ -25,6 +25,7 @@ namespace Cake.GitFlow.Release.Aliases
                     break;
                 case CreateNewReleaseBranch newReleaseBranch:
                     // Todo:
+
                     break;
             }
 

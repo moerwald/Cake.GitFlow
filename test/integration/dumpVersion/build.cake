@@ -11,12 +11,14 @@ Task("Default")
     GitFlowShotGitVersion();
 });
 
+/* 
 Task("CreateNewRelease")
     .Does(() =>{
         GitFlowNewRelease(new GitFlowReleaseSettings{});
 
 
     });
+    */
 
 // EXECUTION
 RunTarget(target);
