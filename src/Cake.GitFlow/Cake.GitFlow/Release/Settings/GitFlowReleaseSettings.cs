@@ -1,7 +1,7 @@
-﻿using Cake.Core.Tooling;
-
-namespace Cake.GitFlow.Release.Settings
+﻿namespace Cake.GitFlow.Release.Settings
 {
+    using Cake.Core.Tooling;
+
     /// <summary>
     /// Settings for creating a new GitFlow release. Supported settings are:
     /// - Create a new release branch, where the name of the release branch follows the syntax

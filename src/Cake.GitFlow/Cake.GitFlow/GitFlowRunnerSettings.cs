@@ -1,7 +1,5 @@
 ﻿namespace Cake.GitFlow
 {
-    using System;
-    using Cake.Core;
     using Cake.Core.IO;
     using Cake.Core.Tooling;
 

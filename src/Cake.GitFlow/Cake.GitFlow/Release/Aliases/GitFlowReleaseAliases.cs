@@ -1,10 +1,11 @@
-﻿using Cake.Core;
-using Cake.Core.Annotations;
-using Cake.GitFlow.Release.Settings;
-using System;
-
+﻿
 namespace Cake.GitFlow.Release.Aliases
 {
+    using Cake.Core;
+    using Cake.Core.Annotations;
+    using Cake.GitFlow.Release.Settings;
+    using System;
+
     public static class GitFlowReleaseAliases
     {
         [CakeMethodAlias()]
@@ -15,8 +16,6 @@ namespace Cake.GitFlow.Release.Aliases
             // Param null checks
             if (context is null) { throw new ArgumentNullException(nameof(context)); }
             if (settings is null) { throw new ArgumentNullException(nameof(settings)); }
-
-
 
             switch (settings)
             {

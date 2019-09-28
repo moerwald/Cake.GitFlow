@@ -1,7 +1,8 @@
-﻿using System;
-
+﻿
 namespace Cake.GitFlow.Release.Settings
 {
+    using System;
+
     public class ReleaseBranchBehaviour
     {
         public bool CreateNewReleaseBranch { get; set; } = false;

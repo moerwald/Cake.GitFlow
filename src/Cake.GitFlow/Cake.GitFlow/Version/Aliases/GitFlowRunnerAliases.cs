@@ -1,10 +1,11 @@
-﻿using Cake.Core;
-using Cake.Core.Annotations;
-using Cake.GitFlow.Version.Settings;
-using System;
-
+﻿
 namespace Cake.GitFlow.Version.Aliases
 {
+    using Cake.Core;
+    using Cake.Core.Annotations;
+    using Cake.GitFlow.Version.Settings;
+    using System;
+
     public static class GitFlowRunnerAliases
     {
         [CakeMethodAlias()]

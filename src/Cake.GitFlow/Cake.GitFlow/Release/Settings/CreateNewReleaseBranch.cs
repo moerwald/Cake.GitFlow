@@ -1,8 +1,8 @@
-﻿using FluentOptionals;
-using System;
-
-namespace Cake.GitFlow.Release.Settings
+﻿namespace Cake.GitFlow.Release.Settings
 {
+    using FluentOptionals;
+    using System;
+
     public class CreateNewReleaseBranch : GitFlowReleaseSettings
     {
         /// <summary>
