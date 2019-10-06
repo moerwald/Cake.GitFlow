@@ -5,14 +5,11 @@ namespace Cake.GitFlow.Release.Workflow
 
     internal class MergeDevBranchToMasterBranch
     {
-        public MergeDevBranchToMasterBranch(IGitFlowRunner runner, IFetchNextVersion fetchVersion)
+        public MergeDevBranchToMasterBranch(IGitFlowRunner runner, MergeInformation mergeInformation)
         {
             // Param checks
-            if (runner is null) { throw new System.ArgumentNullException(nameof(runner)); }
-            if (fetchVersion is null) { throw new System.ArgumentNullException(nameof(fetchVersion)); }
-
-            Runner = runner;
-            FetchVersion = fetchVersion;
+            Runner = runner ?? throw new System.ArgumentNullException(nameof(runner));
+            MergeInformation = mergeInformation ?? throw new System.ArgumentNullException(nameof(mergeInformation));
         }
 
 
@@ -20,27 +17,26 @@ namespace Cake.GitFlow.Release.Workflow
         /// Needed to fire git commands
         /// </summary>
         public IGitFlowRunner Runner { get; }
-
-        /// <summary>
-        /// Needed to get next version to GIT tag creation
-        /// </summary>
-        public IFetchNextVersion FetchVersion { get; }
+        public MergeInformation MergeInformation { get; }
 
         public string Version { get; private set; }
 
-        public void CalculateVersion() => Version = FetchVersion.GetNextVersion();
-
         public void MergeDevBranchToMaster()
         {
-            Runner.Run(new List<string> { "checkout develop" });
-            Runner.Run(new List<string> { "pull" });
+            Mwd.Exceptions.Boundary.CatchAll(() =>
+            {
+                var branchPrefix = MergeInformation.BranchPrefix;
+                Runner.Run(new List<string> { $"checkout {branchPrefix}develop" });
 
-            Runner.Run(new List<string> { "checkout master" });
-            Runner.Run(new List<string> { "pull" });
-            Runner.Run(new List<string> { "merge develop" });
+                Runner.Run(new List<string> { "pull" });
 
-            // TODO: Check if we can inject commit message to git tag -a
-            Runner.Run(new List<string> { $"tag {FetchVersion.GetNextVersion()}" });
+                Runner.Run(new List<string> { $"checkout {branchPrefix}master" });
+                Runner.Run(new List<string> { "pull" });
+                Runner.Run(new List<string> { $"merge {branchPrefix}develop" });
+
+                // TODO: Check if we can inject commit message to git tag -a
+                Runner.Run(new List<string> { $"tag {MergeInformation.NewVersion}" });
+            }, ex => { });
         }
     }
 

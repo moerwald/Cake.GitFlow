@@ -13,10 +13,11 @@
     /// </summary>
     public abstract class GitFlowReleaseSettings : ToolSettings
     {
-        public VersionIncrement VersionDigitToIncrement { get; set; } = new VersionIncrement();
+        public string NewVersion { get; set; }
+
+        public string BranchPrefix { get; set; }
 
         protected ReleaseBranchBehaviour ReleaseBranchBehaviour { get; set; } = new ReleaseBranchBehaviour();
 
-        public string TagPrefix { get; set; } = string.Empty;
     }
 }

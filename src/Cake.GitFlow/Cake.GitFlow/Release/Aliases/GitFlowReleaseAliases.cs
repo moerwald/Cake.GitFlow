@@ -5,6 +5,7 @@ namespace Cake.GitFlow.Release.Aliases
     using Cake.Core.Annotations;
     using Cake.GitFlow.Release.Settings;
     using System;
+using  Cake.GitFlow.Release.Workflow;
 
     public static class GitFlowReleaseAliases
     {
@@ -17,9 +18,15 @@ namespace Cake.GitFlow.Release.Aliases
             if (context is null) { throw new ArgumentNullException(nameof(context)); }
             if (settings is null) { throw new ArgumentNullException(nameof(settings)); }
 
+            var runner = new GitFlowRunner(context);
+
             switch (settings)
             {
                 case MergeDevBranchToMaster mergeToMaser:
+                    var wf = new MergeDevBranchToMasterBranch(
+                        runner,
+                        new MergeInformation(settings.NewVersion, "", branchPrefix: settings.BranchPrefix));
+                    wf.MergeDevBranchToMaster();
                     // Todo:
                     break;
                 case CreateNewReleaseBranch newReleaseBranch:
@@ -36,7 +43,7 @@ namespace Cake.GitFlow.Release.Aliases
 
 
             // Remove below line just needed for CI to check if we still compile
-            return new GitFlowRunner(context);
+            return runner;
         }
     }
 }
