@@ -25,7 +25,8 @@ using  Cake.GitFlow.Release.Workflow;
                 case MergeDevBranchToMaster mergeToMaser:
                     var wf = new MergeDevBranchToMasterBranch(
                         runner,
-                        new MergeInformation(settings.NewVersion, "", branchPrefix: settings.BranchPrefix));
+                        new MergeInformation(settings.NewVersion, "", branchPrefix: settings.BranchPrefix),
+                        context.Log);
                     wf.MergeDevBranchToMaster();
                     // Todo:
                     break;

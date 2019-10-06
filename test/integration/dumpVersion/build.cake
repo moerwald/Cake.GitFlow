@@ -1,7 +1,7 @@
-#reference "..\..\..\src\Cake.GitFlow\Cake.GitFlow\bin\Debug\netstandard2.0\Cake.GitFlow.dll"
+#reference "..\..\src\Cake.GitFlow\Cake.GitFlow\bin\Debug\netstandard2.0\Cake.GitFlow.dll"
 // ARGUMENTS
 var target = Argument("target", "Default");
-var slnFile = @"..\src\Cake.GitFlow\Cake.GitFlow.sln";
+var newGitTagVersion = Argument("newGitTagVersion", null);
 
 // TASKS
 
@@ -11,14 +11,14 @@ Task("Default")
     GitFlowShotGitVersion();
 });
 
-/* 
-Task("CreateNewRelease")
+Task("MergeDevBranchToMasterAndCreateGitTag")
     .Does(() =>{
-        GitFlowNewRelease(new GitFlowReleaseSettings{});
-
-
+        GitFlowNewRelease(
+            new MergeDevBranchToMaster
+            {
+                NewVersion = newGitTagVersion
+            });
     });
-    */
 
 // EXECUTION
 RunTarget(target);
